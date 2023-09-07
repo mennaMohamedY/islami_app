@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".suraDetails"
+    android:background="@drawable/default_bg">
+    <TextView
+        android:id="@+id/content_borders"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent=".8"
+        app:layout_constraintHeight_percent="0.9"
+        android:background="@drawable/rounded_borders"/>
+    <TextView
+        android:id="@+id/detailed_suraName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="سوره البقره"
+        app:layout_constraintEnd_toEndOf="@id/content_borders"
+        app:layout_constraintTop_toTopOf="@id/content_borders"
+        app:layout_constraintStart_toStartOf="@id/content_borders"
+        android:layout_marginTop="20dp"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:drawablePadding="15dp"
+        android:drawableRight="@drawable/ic_baseline_play_circle_24"
+        android:theme="@style/detailedtextColor"
+        />
+    <View
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="@color/gold_white"
+        app:layout_constraintTop_toBottomOf="@id/detailed_suraName"
+        app:layout_constraintStart_toStartOf="@id/content_borders"
+        app:layout_constraintEnd_toEndOf="@id/content_borders"
+        android:layout_marginHorizontal="24dp"
+        android:id="@+id/detailed_border"/>
+    <ScrollView
+        android:scrollbars="horizontal"
+        android:id="@+id/suradetailed_scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@id/content_borders"
+        app:layout_constraintEnd_toEndOf="@id/content_borders"
+        app:layout_constraintTop_toBottomOf="@id/detailed_border"
+        app:layout_constraintBottom_toBottomOf="@id/content_borders"
+        android:padding="17dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/textView_scrollView"
+            android:textSize="19sp"
+            tools:text="hey"
+            android:theme="@style/detailedtextColor"/>
+
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
