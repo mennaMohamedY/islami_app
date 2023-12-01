@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.example.quranapplication.model.DataItem" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="9dp"
+        android:id="@+id/constraintlo"
+        android:background="@drawable/qareaabg">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@{vm.name}"
+            android:textSize="22sp"
+            android:id="@+id/sheikhName"
+            android:padding="12dp"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

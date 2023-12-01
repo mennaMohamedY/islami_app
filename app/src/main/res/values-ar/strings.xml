@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">QuranApplication</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="listen">استماع</string>
+    <string name="sebha">تسبيح</string>
+    <string name="hadeeth">احاديث</string>
+    <string name="quran">قران</string>
+    <string name="islami">اسلامي</string>
+    <string name="title_activity_sura_details">SuraDetailsActivity</string>
+    <!-- Strings used for fragments for navigation -->
+
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+
+    <string name="sobhan_allah">سبحان الله</string>
+    <string name="number_of_tasbeh">عدد التسبيح</string>
+
+</resources>

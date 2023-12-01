@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">QuranApplication</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="listen">Listen</string>
+    <string name="sebha">Tasbeeh</string>
+    <string name="hadeeth">Ahadeeth</string>
+    <string name="quran">Quran</string>
+    <string name="islami">Islami</string>
+    <string name="title_activity_sura_details">SuraDetailsActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+
+    <string name="sobhan_allah">" sobhan Allah"</string>
+    <string name="number_of_tasbeh">tasbeh num</string>
+
+</resources>
