@@ -45,7 +45,6 @@ class ListenToSuraActivity : AppCompatActivity() {
             SuraDetails=sura
             return ListenToSuraActivity()
         }
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,25 +63,9 @@ class ListenToSuraActivity : AppCompatActivity() {
         ListenToSuraBinding.resume.setOnClickListener({
             ListenToSuraBinding.resume.visibility=View.INVISIBLE
             ListenToSuraBinding.pause.visibility=View.VISIBLE
-            //showWhatsInsideList()
-            //startAudioStream(SuraLinkProvider.SuraLink!!)
-//
             getSura()
-
-
-            if(isStreaming == true){
-                //stopPlaying()
-                //isStreaming=false
-            }else{
-                //val url=SuraLinkProvider.SuraLink
-                //val url=ayaturl.get(0)
-                Log.e("t","${SuraLinkProvider.SuraLink!!.get(1)}")
-
-                //startAudioStream(SuraLinkProvider.SuraLink!!.get(1))
-                //startAudioStream(SuraLinkProvider.SuraLink!!)
-                //isStreaming=true
-            }
         })
+
         ListenToSuraBinding.stop.setOnClickListener({
             ListenToSuraBinding.resume.visibility=View.VISIBLE
             ListenToSuraBinding.pause.visibility=View.INVISIBLE
@@ -90,14 +73,8 @@ class ListenToSuraActivity : AppCompatActivity() {
             Log.e("btnstop","Stop Botton Clicked")
             stop=true
             Toast.makeText(this," برجاء الانتظار سيتم الايقاف بعد انتهاء  هذه الايه ",Toast.LENGTH_LONG).show()
-
-            //getSura().cancelAndJoin()
-//
-//            lifecycleScope.launch {
-//                getSura().cancelAndJoin()
-//            }
-            //stopPlaying()
         })
+
         ListenToSuraBinding.seekbar.setOnSeekBarChangeListener(object :OnSeekBarChangeListener{
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
                 if(p2){
@@ -151,92 +128,10 @@ class ListenToSuraActivity : AppCompatActivity() {
             m!!.release()
             m= MediaPlayer()
             m!!.reset()
-//            val intent= Intent(this@ListenToSuraActivity,AllQuranSurasActivity.getInstance(QareaaData!!)::class.java)
-//            startActivity(intent)
         }
         return true
     }
-    //    fun startAudioStream(urll:String){
-//        if(m ==null)
-//            m = MediaPlayer()
-//        lifecycleScope.launch {
-//            if(m ==null)
-//                m = MediaPlayer()
-//            try {
-//                //Log.e("nm","${i}")
-//                Log.e("audioUrl","Url :"+ urll)
-////                m!!.setAudioStreamType(AudioManager.STREAM_MUSIC)
-////                m!!.setDataSource(ayatArray)
-////                m!!.prepare()
-////                m!!.setVolume(1f,1f)
-////                m!!.isLooping=false
-////                m!!.start()
-//                //val url = "http://........" // your URL here
-//                val mediaPlayer = MediaPlayer().apply {
-//                    setAudioAttributes(
-//                        AudioAttributes.Builder()
-//                            .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-//                            .setUsage(AudioAttributes.USAGE_MEDIA)
-//                            .build()
-//                    )
-//                    setDataSource(urll)
-//                    prepare() // might take long! (for buffering, etc)
-//                    start()
-//                }
-//            }catch (e:Exception){
-//                Log.e("Error","Error occured while playing audio ${e.localizedMessage}")
-//            }
-//        }
-//
-//
-//
-//    }
     var i =0
-
-    fun startAudioStream(urll:MutableList<String>){
-        if(m ==null)
-            m = MediaPlayer()
-
-        var isFinished=false
-        var i=0
-        first@ while (i<=urll.size-1){
-            val resp=lifecycleScope.launch(Dispatchers.IO) {
-                try {
-                    //Log.e("nm","${i}")
-                    m = MediaPlayer().apply {
-                        setAudioAttributes(
-                            AudioAttributes.Builder()
-                                .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-                                .setUsage(AudioAttributes.USAGE_MEDIA)
-                                .build()
-                        )
-                        setDataSource(urll[i])
-                        prepare() // might take long! (for buffering, etc)
-                        start()
-                    }
-                    while (m!!.isPlaying){
-                        Log.e("audioUrl","Url :"+ urll[i])
-                        ListenToSuraBinding.stop.setOnClickListener({
-                            m!!.stop()
-                            m!!.release()
-                            m= MediaPlayer()
-                            m!!.reset()
-                            i=urll.size
-                        })
-
-                    }
-
-                }catch (e:Exception){
-                    Log.e("Error","Error occured while playing audio ${e.localizedMessage}")
-                }
-
-            }
-            resp.wait()
-            i++
-
-        }
-
-    }
 
     suspend fun getAudioStream(urrl:String):MediaPlayer{
 
@@ -260,18 +155,8 @@ class ListenToSuraActivity : AppCompatActivity() {
 
             while (m!!.isPlaying){
                 ayahDuration =ayahDuration!! + m!!.duration
-
-//                lifecycleScope.launch {
-//                    initSeekBar()
-//                }
-                //ListenToSuraBinding.duration.text=ayahDuration.toString() + "ms"
-                //Log.e("duration", "${m!!.duration}")
             }
-            //delay(m!!.duration)
-            //m!!.duration.wait()
-            //Log.e("duration","${m!!.duration}")
 
-            //Log.e("audioUrl","Url :"+ urll[i])
 
         }catch (e:Exception){
             Log.e("Error","Error occured while playing audio ${e.localizedMessage}")
@@ -279,34 +164,6 @@ class ListenToSuraActivity : AppCompatActivity() {
         return m as MediaPlayer
 
     }
-    suspend fun getAudioStream2(urrl:String,mm:MediaPlayer):MediaPlayer{
-
-        if(m ==null)
-            m = MediaPlayer()
-        var isFinished=false
-        try {
-            //Log.e("nm","${i}")
-            m = MediaPlayer().apply {
-                setAudioAttributes(
-                    AudioAttributes.Builder()
-                        .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-                        .setUsage(AudioAttributes.USAGE_MEDIA)
-                        .build()
-                )
-                setDataSource(urrl)
-                prepare() // might take long! (for buffering, etc)
-                start()
-            }
-            //Log.e("audioUrl","Url :"+ urll[i])
-
-        }catch (e:Exception){
-            Log.e("Error","Error occured while playing audio ${e.localizedMessage}")
-        }
-        return m as MediaPlayer
-
-    }
-
-
 
     fun getSuraFromApi(){
         val Qareaaname= QareaaData?.identifier

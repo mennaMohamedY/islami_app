@@ -1,6 +1,8 @@
 package com.example.quranapplication.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 data class QoraaResponse(
 
@@ -14,6 +16,7 @@ data class QoraaResponse(
 	val status: String? = null
 )
 
+@Parcelize
 data class DataItem(
 
 	@field:SerializedName("identifier")
@@ -34,6 +37,6 @@ data class DataItem(
 	@field:SerializedName("type")
 	val type: String? = null,
 
-	@field:SerializedName("direction")
-	val direction: Any? = null
-)
+//	@field:SerializedName("direction")
+//	val direction: Any? = null
+):Parcelable

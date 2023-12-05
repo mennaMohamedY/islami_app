@@ -1,6 +1,8 @@
 package com.example.quranapplication.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 data class QurannResponse(
 
@@ -14,6 +16,7 @@ data class QurannResponse(
 	val status: String? = null
 )
 
+@Parcelize
 data class SurahsItem(
 
 	@field:SerializedName("number")
@@ -33,7 +36,7 @@ data class SurahsItem(
 
 	@field:SerializedName("englishNameTranslation")
 	val englishNameTranslation: String? = null
-)
+):Parcelable
 
 data class Data(
 
@@ -65,6 +68,7 @@ data class Edition(
 	val type: String? = null
 )
 
+@Parcelize
 data class AyahsItem(
 
 	@field:SerializedName("number")
@@ -90,5 +94,5 @@ data class AyahsItem(
 
 	@field:SerializedName("juz")
 	val juz: Int? = null
-)
+):Parcelable
 

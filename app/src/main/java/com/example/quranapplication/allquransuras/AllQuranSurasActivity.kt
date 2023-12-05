@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.navArgs
 import com.example.quranapplication.R
 import com.example.quranapplication.databinding.ActivityAllQuranSurasBinding
 import com.example.quranapplication.listentosura.ListenToSuraActivity
@@ -19,19 +20,17 @@ class AllQuranSurasActivity : AppCompatActivity() {
     lateinit var AllQuranBinding:ActivityAllQuranSurasBinding
     lateinit var AllQuranSurasVM:AllQuranSurasViewModel
     var surasAdapter=SuarasAdapter(mutableListOf())
+    val args:AllQuranSurasActivityArgs by navArgs()
 
     companion object{
         var sheikhData:DataItem?=null
-        fun getInstance(qareaaData:DataItem):AllQuranSurasActivity{
-            sheikhData=qareaaData
-            return AllQuranSurasActivity()
-        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AllQuranBinding=ActivityAllQuranSurasBinding.inflate(layoutInflater)
         setContentView(AllQuranBinding.root)
+        sheikhData=args.qaraadata
         GetAllQuranData()
         AllQuranBinding.surasRV.adapter=surasAdapter
         AllQuranSurasVM=ViewModelProvider(this).get(AllQuranSurasViewModel::class.java)

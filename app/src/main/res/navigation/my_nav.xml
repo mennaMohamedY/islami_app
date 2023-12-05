@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/ahadeethFragment"
+        android:name="com.example.quranapplication.ahadeeth.AhadeethFragment"
+        android:label="AhadeethFragment" >
+        <action
+            android:id="@+id/action_ahadeethFragment_to_suraDetailsActivity"
+            app:destination="@id/suraDetailsActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.quranapplication.HomeFragment.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_suraDetailsActivity"
+            app:destination="@id/suraDetailsActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/tasbehFragment"
+        android:name="com.example.quranapplication.tasbeh.TasbehFragment"
+        android:label="TasbehFragment" />
+    <fragment
+        android:id="@+id/quranRecitationFragment"
+        android:name="com.example.quranapplication.recitation.QuranRecitationFragment"
+        android:label="QuranRecitationFragment" >
+        <action
+            android:id="@+id/action_quranRecitationFragment_to_allQuranSurasActivity"
+            app:destination="@id/allQuranSurasActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/suraDetailsActivity"
+        android:name="com.example.quranapplication.suradetails.SuraDetailsActivity"
+        android:label="SuraDetailsActivity" >
+        <argument
+            android:name="sis"
+            app:argType="com.example.quranapplication.model.SurahsItem"
+            app:nullable="true" />
+        <argument
+            android:name="hadeethdetails"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="hadeethnum"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </activity>
+    <activity
+        android:id="@+id/allQuranSurasActivity"
+        android:name="com.example.quranapplication.allquransuras.AllQuranSurasActivity"
+        android:label="AllQuranSurasActivity" >
+        <argument
+            android:name="qaraadata"
+            app:argType="com.example.quranapplication.model.DataItem" />
+    </activity>
+    <activity
+        android:id="@+id/listenToSuraActivity2"
+        android:name="com.example.quranapplication.listentosura.ListenToSuraActivity"
+        android:label="ListenToSuraActivity" />
+</navigation>

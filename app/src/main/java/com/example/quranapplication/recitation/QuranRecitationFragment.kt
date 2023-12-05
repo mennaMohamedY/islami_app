@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
+import androidx.navigation.fragment.findNavController
 import com.example.quranapplication.R
 import com.example.quranapplication.allquransuras.AllQuranSurasActivity
 import com.example.quranapplication.databinding.FragmentQuranRecitationBinding
@@ -44,8 +45,10 @@ class QuranRecitationFragment : Fragment(),QuranRecitationNavigator {
         QuranRecitationBinding.qoraaRv.adapter=QoraaAdapter
         QoraaAdapter.onSheikhClickListener=object :QoraaAdapter.OnSheikhClickListener{
             override fun OnSheikhClick(QareaaData: DataItem, position: Int) {
-                val intent= Intent(requireContext(),AllQuranSurasActivity.getInstance(QareaaData)::class.java)
-                startActivity(intent)
+//                val intent= Intent(requireContext(),AllQuranSurasActivity.getInstance(QareaaData)::class.java)
+//                startActivity(intent)
+                val action=QuranRecitationFragmentDirections.actionQuranRecitationFragmentToAllQuranSurasActivity(QareaaData)
+                findNavController().navigate(action)
             }
         }
     }

@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.quranapplication.R
 import com.example.quranapplication.databinding.FragmentAhadeethBinding
 import com.example.quranapplication.suradetails.SuraDetailsActivity
@@ -37,7 +38,6 @@ class AhadeethFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         hadeethBinding=DataBindingUtil.inflate(inflater,R.layout.fragment_ahadeeth,container,false)
         return hadeethBinding.root
     }
@@ -50,12 +50,10 @@ class AhadeethFragment : Fragment() {
         ahadeethAdapter.onHadeethNumClickListener=object :AhadeethAdapter.OnHadeethNumClickListener{
             override fun OnHadeethNumClick(hadeeth: String, position: Int) {
                 val getHadeth=hadeethcontent.get(position)
-                val intent= Intent(requireContext(),SuraDetailsActivity.getInstance2(getHadeth,position)::class.java)
-                startActivity(intent)
+                val action=AhadeethFragmentDirections.actionAhadeethFragmentToSuraDetailsActivity(null,getHadeth,position)
+                findNavController().navigate(action)
             }
-
         }
-
     }
 
     fun readHadethFile(){

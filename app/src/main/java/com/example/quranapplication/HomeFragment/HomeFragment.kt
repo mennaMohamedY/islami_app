@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
+import androidx.navigation.fragment.findNavController
 import com.example.quranapplication.R
 import com.example.quranapplication.databinding.FragmentHomeBinding
 import com.example.quranapplication.model.APIManager
@@ -47,8 +48,8 @@ class HomeFragment : Fragment(),HomeNavigator {
         HomeVM.nav=this
         homeAdapter.onSuraClickListener=object :HomeAdapter.OnSuraClickListener{
             override fun OnSuraClick(sura: SurahsItem, position: Int) {
-                val intent= Intent(requireContext(),SuraDetailsActivity.getInstance(sura)::class.java)
-                startActivity(intent)
+                val action=HomeFragmentDirections.actionHomeFragmentToSuraDetailsActivity(sura,null)
+                findNavController().navigate(action)
             }
         }
     }
@@ -58,7 +59,6 @@ class HomeFragment : Fragment(),HomeNavigator {
             homeAdapter.updateData(it)
         }
         hideProgressBar()
-
     }
 
     override fun hideProgressBar() {
